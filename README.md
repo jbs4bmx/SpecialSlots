@@ -9,15 +9,14 @@ Special Slots now hold all.
 
 ### Pros/Cons
 
-Pro:
+Pros:
   * Special Slots can hold anything.
   * Special Slots can be used to hold containers so you can hold even more items.
   * Special Slots retain everything after death.
-  * Special Slots don't give a damn.
 
 Cons:
   * Special Slots cannot hold stacks of objects such as Ammo unless they are in a container.
   * Special Slots use containers much like the Armor, Backpack, and Secure Container slots so the containers expand when placed in the slots.
-  * Special Slots don't give a damn.
+  * Containers/Weapons/Items placed into Special Slots that have been insured will go through the insurance process upon your death. For example: if you have an insured container full of awesome loot in a Special Slot when you die, then you loose the loot and the container is subject to the insurance process.
 
 ### Good Luck Soldier!
