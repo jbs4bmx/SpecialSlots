@@ -12,7 +12,7 @@ Special Slots now hold all.
 Pros:
   * Special Slots can hold anything.
   * Special Slots can be used to hold containers so you can hold even more items.
-  * Special Slots retain everything after death.
+  * Special Slots retain everything after death. (See 'Cons' section for the one exception.)
 
 Cons:
   * Special Slots cannot hold stacks of objects such as Ammo unless they are in a container.
