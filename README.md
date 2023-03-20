@@ -7,6 +7,9 @@ Well, here you go.
 
 Special Slots now hold all.
 
+### Mod Compatibility
+Compatible with changes to pockets made by SVM.
+
 ### Pros/Cons
 
 Pros:
