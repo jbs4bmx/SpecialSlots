@@ -1,6 +1,6 @@
 {
     "name": "SpecialSlots",
-    "version": "353.0.2",
+    "version": "353.0.3",
     "main": "src/specSlots.js",
     "license": "MIT",
     "author": "jbs4bmx",
