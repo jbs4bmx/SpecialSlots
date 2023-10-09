@@ -1,7 +1,7 @@
 # Special Slots
 
 ### WHAT
-As of version 0.12.12.30.19078, BSG gave us 3 "SPEC" slots. My question is, "Why not allow us to put other items in one of those slots?"
+You have 3 "SPEC" slots. My question is, "Why not allow all items to be placed in those slots?"
 
 Well, here you go.
 
