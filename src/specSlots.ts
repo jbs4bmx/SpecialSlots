@@ -17,19 +17,25 @@ class SpecSlots implements IMod {
 
         // Default Pockets
         pockets._props.Slots[0]._props.filters[0].Filter.push("54009119af1c881c07000029");
+        pockets._props.Slots[0]._props._mergeSlotWithChildren = "true";
         pockets._props.Slots[1]._props.filters[0].Filter.push("54009119af1c881c07000029");
+        pockets._props.Slots[1]._props._mergeSlotWithChildren = "true";
         pockets._props.Slots[2]._props.filters[0].Filter.push("54009119af1c881c07000029");
+        pockets._props.Slots[2]._props._mergeSlotWithChildren = "true";
 
         // Compatibility for SVM Custom Pockets.
         if ( typeof db.templates.items["CustomPocket"] !== "undefined" ) {
             if (typeof db.templates.items["CustomPocket"]._props.Slots[0] !== "undefined") {
                 db.templates.items["CustomPocket"]._props.Slots[0]._props.filters[0].Filter.push("54009119af1c881c07000029");
+                db.templates.items["CustomPocket"]._props.Slots[0]._props._mergeSlotWithChildren = "true";
             }
             if (typeof db.templates.items["CustomPocket"]._props.Slots[1] !== "undefined") {
                 db.templates.items["CustomPocket"]._props.Slots[1]._props.filters[0].Filter.push("54009119af1c881c07000029");
+                db.templates.items["CustomPocket"]._props.Slots[1]._props._mergeSlotWithChildren = "true";
             }
             if (typeof db.templates.items["CustomPocket"]._props.Slots[2] !== "undefined") {
                 db.templates.items["CustomPocket"]._props.Slots[2]._props.filters[0].Filter.push("54009119af1c881c07000029");
+                db.templates.items["CustomPocket"]._props.Slots[2]._props._mergeSlotWithChildren = "true";
             }
         }
 
