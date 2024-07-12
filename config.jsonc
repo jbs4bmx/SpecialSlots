@@ -1,0 +1,29 @@
+{
+    // ====================================================================================================
+    // CAPABILITY_SELECTION
+    // Choose 1 or more options.
+    // Determines the version of the mod to load. (Default = "AllItems")
+    // NOTE 1: If "AllItems" is set to "true", the other options will be ignored.
+    // NOTE 2: Set "AllItems" to false if using the any of the other options.
+    // NOTE 3: Special Items will always be allowed in the Special Slots. (Game default.)
+    // ====================================================================================================
+
+    "AllItems": true,
+
+    // ====================================================================================================
+    // NOTE: All options below this line require that "AllItems" be set to false for them to work.
+    // ====================================================================================================
+    "LimitedItems": {
+        "Meds": false,
+        "Firearms": false,
+        "FoodAndDrink": false,
+        "Throwables": false,
+        "BarterItems": false,
+        "Maps": false,
+        "SecureContainers": false,
+        "Containers": false,
+        "Rigs": false,
+        "Armors": false,
+        "RepairKits": false
+    }
+}

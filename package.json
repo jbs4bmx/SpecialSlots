@@ -1,10 +1,10 @@
 {
     "name": "SpecialSlots",
-    "version": "380.0.1",
+    "version": "390.0.1",
     "main": "src/specSlots.js",
     "license": "MIT",
     "author": "jbs4bmx",
-    "akiVersion": "3.8.*",
+    "sptVersion": "3.9.*",
     "scripts": {
         "setup": "npm i",
         "build": "node ./build.mjs",
