@@ -6,19 +6,27 @@ You have 3 "SPEC" slots. My question is, "Why not allow all items to be placed i
 Well, here you go. <br>
 Special Slots now hold all. <br>
 
+**New as of version 390.0.2** - Special Slots now contains both a Server and a Client mod. The Client mod (also aptly named SpecialSlots.dll) aims to hide the slot view of containers placed into a Special Slot. Some containers, such as rigs, still show their slot views when placed into Special Slots.
+
+
 ## Mod Compatibility
-Compatible with changes to pockets made by SVM.
+Compatible with ServerValueModifier's custom pockets. (Some limitations are expected.)
+  * Special Slots are only visible when using a 1 cell width for each of the 4 pockets.
+    - Exception: Using only 3 or less pockets, you can expand them horizontally so long as they don't total more than 4 wide.
+    - For example; if you increase the width of your pockets to 2 cells each, then this will "push" Special Slots off screen (technically under your invetory box) and you will not be able to use them.
+
 
 ## Pros/Cons
 Pros:
   * Special Slots can hold anything.
   * Special Slots can be used to hold containers so you can hold even more items.
-  * Special Slots retain everything after death. (See 'Cons' section for the one exception.)
+  * Special Slots retain everything after death. (See 'Cons' section for the one exception - insurance.)
 
 Cons:
   * Special Slots cannot hold stacks of objects such as Ammo unless they are in a container.
-  * Special Slots use containers much like the Armor, Backpack, and Secure Container slots so the containers expand when placed in the slots. SVM now has an option to hide this "feature".
-  * Containers/Weapons/Items placed into Special Slots that have been insured will go through the insurance process upon your death. For example: if you have an insured container full of awesome loot in a Special Slot when you die, then you loose the loot and the container is subject to the insurance process.
+    - There no ETA for a fix for this "feature".
+  * **Insurance** - Containers/Weapons/Items placed into Special Slots that have been insured will go through the insurance process upon your death.
+    - For example; if you have an insured container full of awesome loot in a Special Slot when you die, then you loose the loot and the container is subject to the insurance process.
 
 
 ## Installation
@@ -26,11 +34,10 @@ Cons:
 "[SPT]" = Your SPT folder path
    1. Extract the contents of the zip file into the root of your [SPT] folder.
       - That's the same location as "SPT.Server.exe" and "SPT.Launcher.exe".
-   2. Edit the Config to adjust the values to your likeing.
+   2. Edit the Config to adjust the values to your liking.
    3. Start SPT.Server.exe and wait until it fully loads.
-   4. Start SPT.Launcher.exe but do not launch the game.
-   5. Run the cache cleaner found in the launcher's settings menu.
-   6. Now you can launch the game and profit.
+   4. Start SPT.Launcher.exe.
+   5. Now you can launch the game and profit.
 
 ### Common Questions
    1. Where do I report bugs found with the current version of the mod?
