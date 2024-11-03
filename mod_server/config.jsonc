@@ -8,24 +8,24 @@
     // NOTE 3: Special Items will always be allowed in the Special Slots. (Game default.)
     // ====================================================================================================
 
-    "AllItems": false,
+    "AllItems": true,
 
     // ====================================================================================================
     // NOTE: All options below this line require that "AllItems" be set to false for them to work.
     // ====================================================================================================
     "LimitedItems": {
-        "Meds": true,
+        "Meds": false,
         "Firearms": false,
-        "FoodAndDrink": true,
-        "Throwables": true,
+        "FoodAndDrink": false,
+        "Throwables": false,
         "BarterItems": false,
-        "Maps": true,
+        "Maps": false,
         "SecureContainers": false,
         "Containers": false,
         "Rigs": false,
         "Armors": false,
         "RepairKits": false,
-        "CustomItems": true
+        "CustomItems": false
     },
 
     // ====================================================================================================
