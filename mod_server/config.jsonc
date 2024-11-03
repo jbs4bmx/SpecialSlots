@@ -8,22 +8,36 @@
     // NOTE 3: Special Items will always be allowed in the Special Slots. (Game default.)
     // ====================================================================================================
 
-    "AllItems": true,
+    "AllItems": false,
 
     // ====================================================================================================
     // NOTE: All options below this line require that "AllItems" be set to false for them to work.
     // ====================================================================================================
     "LimitedItems": {
-        "Meds": false,
+        "Meds": true,
         "Firearms": false,
-        "FoodAndDrink": false,
-        "Throwables": false,
+        "FoodAndDrink": true,
+        "Throwables": true,
         "BarterItems": false,
-        "Maps": false,
+        "Maps": true,
         "SecureContainers": false,
         "Containers": false,
         "Rigs": false,
         "Armors": false,
-        "RepairKits": false
-    }
+        "RepairKits": false,
+        "CustomItems": true
+    },
+
+    // ====================================================================================================
+    // Add the specific IDs of the items you want to be allowed into special slots here. This Should work for modded items
+    // The included example IDs are, in order: Wallet, WZ Wallet, Gingy keychain, Key Tool, Alyonka chocolate bar
+    // NOTE: This list is only applied if "CustomItems" is set to "true"
+    // ====================================================================================================
+    "CustomIDsList": [
+        "5783c43d2459774bbe137486",
+        "60b0f6c058e0b0481a09ad11",
+        "62a09d3bcf4a99369e262447",
+        "59fafd4b86f7745ca07e1232",
+        "57505f6224597709a92585a9"
+    ]
 }
