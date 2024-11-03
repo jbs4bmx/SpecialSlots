@@ -19,7 +19,7 @@ class SpecSlots implements IMod {
         const altPockets = db.templates.items["65e080be269cbd5c5005e529"];
         this.pkg = require("../package.json")
         const vfs = container.resolve<VFS>("VFS");
-        const { AllItems, LimitedItems } = jsonc.parse(vfs.readFile(path.resolve(__dirname, "../config.jsonc")));
+        const { AllItems, LimitedItems, CustomIDsList } = jsonc.parse(vfs.readFile(path.resolve(__dirname, "../config.jsonc")));
 
         if ( typeof AllItems !== 'boolean' || typeof LimitedItems.Meds !== 'boolean' || typeof LimitedItems.Firearms !== 'boolean' || typeof LimitedItems.FoodAndDrink !== 'boolean' || typeof LimitedItems.Throwables !== 'boolean' || typeof LimitedItems.BarterItems !== 'boolean' || typeof LimitedItems.Maps !== 'boolean' || typeof LimitedItems.SecureContainers !== 'boolean' || typeof LimitedItems.Containers !== 'boolean' || typeof LimitedItems.Rigs !== 'boolean' || typeof LimitedItems.Armors !== 'boolean' || typeof LimitedItems.RepairKits !== 'boolean' ) {
             logger.error(`SpecialSlots: One or more Compatability selection values are not a boolean value of true or false.`)
@@ -283,12 +283,35 @@ class SpecSlots implements IMod {
                         db.templates.items["a8edfb0bce53d103d3f62b9b"]._props.Slots[2]._props.filters[0].Filter.push("616eb7aea207f41933308f46");
                     }
                 }
-            }
-
-        }
-
+            }//Added block for custom IDs
+		if (LimitedItems.CustomItems === true) {
+			for (const CustID of CustomIDsList) {
+				// Default Pockets
+				defaultPockets._props.Slots[0]._props.filters[0].Filter.push(CustID);
+				defaultPockets._props.Slots[1]._props.filters[0].Filter.push(CustID);
+				defaultPockets._props.Slots[2]._props.filters[0].Filter.push(CustID);
+	
+				// Alt Pockets
+				altPockets._props.Slots[0]._props.filters[0].Filter.push(CustID);
+				altPockets._props.Slots[1]._props.filters[0].Filter.push(CustID);
+				altPockets._props.Slots[2]._props.filters[0].Filter.push(CustID);
+	
+				// Compatibility for SVM Custom Pockets
+				if (typeof db.templates.items["a8edfb0bce53d103d3f62b9b"] !== "undefined") {
+					if (typeof db.templates.items["a8edfb0bce53d103d3f62b9b"]._props.Slots[0] !== "undefined") {
+						db.templates.items["a8edfb0bce53d103d3f62b9b"]._props.Slots[0]._props.filters[0].Filter.push(CustID);
+					}
+					if (typeof db.templates.items["a8edfb0bce53d103d3f62b9b"]._props.Slots[1] !== "undefined") {
+						db.templates.items["a8edfb0bce53d103d3f62b9b"]._props.Slots[1]._props.filters[0].Filter.push(CustID);
+					}
+					if (typeof db.templates.items["a8edfb0bce53d103d3f62b9b"]._props.Slots[2] !== "undefined") {
+						db.templates.items["a8edfb0bce53d103d3f62b9b"]._props.Slots[2]._props.filters[0].Filter.push(CustID);
+					}
+				}
+			}
+		}	
+	}
         logger.info(`${this.pkg.author}-${this.pkg.name} v${this.pkg.version}: Cached Successfully`);
-
     }
 
 }
