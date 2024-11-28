@@ -10,10 +10,10 @@ using static SpecialSlots.Utilities.VersionChecker;
 
 namespace SpecialSlots
 {
-    [BepInPlugin("com.jbs4bmx.SpecialSlots", "SpecialSlots", "390.0.2")]
+    [BepInPlugin("com.jbs4bmx.SpecialSlots", "SpecialSlots", "310.0.1")]
     public class SlotsPlugin : BaseUnityPlugin
     {
-        public const int TarkovVersion = 30626;
+        public const int TarkovVersion = 33420;
         public static SlotsPlugin Instance { get; private set; }
         public ConfigEntry<bool> Enable { get; private set; }
         public ConfigEntry<int> FramesToWait { get; private set; }
@@ -56,9 +56,7 @@ namespace SpecialSlots
                 )
             );
 
-            Logger.LogInfo("Special Slots Client Mod v390.0.2 is loading...");
             new SlotItemViewNewSlotItemViewPatch().Enable();
-            Logger.LogInfo("Special Slots Client Mod v390.0.2 has loaded!");
         }
     }
 }

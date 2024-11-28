@@ -1,4 +1,5 @@
-﻿using EFT;
+﻿using System;
+using EFT;
 using EFT.InventoryLogic;
 using EFT.UI.DragAndDrop;
 using SPT.Reflection.Patching;
@@ -11,6 +12,7 @@ namespace SpecialSlots.Utilities
     {
         protected override MethodBase GetTargetMethod()
         {
+            //return typeof(SlotItemView).GetMethod(nameof(SlotItemView.NewSlotItemView));
             return typeof(SlotItemView).GetMethod("NewSlotItemView");
         }
 
@@ -20,11 +22,11 @@ namespace SpecialSlots.Utilities
             bool flag = !SlotsPlugin.Instance.Enable.Value;
             if (!flag)
             {
-                LootItemClass lootItemClass = item as LootItemClass;
-                bool flag2 = lootItemClass == null;
+                CompoundItem compoundItem = item as CompoundItem;
+                bool flag2 = compoundItem == null;
                 if (!flag2)
                 {
-                    bool flag3 = lootItemClass.Grids != null && lootItemClass.Grids.Length == 0;
+                    bool flag3 = compoundItem.Grids != null && compoundItem.Grids.Length == 0;
                     if (!flag3)
                     {
                         StaticManager.BeginCoroutine(SlotItemViewNewSlotItemViewPatch.DoCoroutine(__instance));
@@ -35,12 +37,11 @@ namespace SpecialSlots.Utilities
 
         private static IEnumerator DoCoroutine(SlotItemView __instance)
         {
-            int num;
-            for (int i = 0; i < SlotsPlugin.Instance.FramesToWait.Value; i = num + 1)
+            for (int i = 0; i < SlotsPlugin.Instance.FramesToWait.Value; i++)
             {
                 yield return null;
-                num = i;
             }
+
             GeneratedGridsView generatedGridsView = __instance.transform.parent.GetComponentInChildren<GeneratedGridsView>();
             bool flag = generatedGridsView != null;
             if (flag)

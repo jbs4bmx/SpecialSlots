@@ -16,11 +16,13 @@ class SpecSlots implements IMod {
     public postDBLoad(container: DependencyContainer): void {
 		const logger = container.resolve<ILogger>("WinstonLogger");
 		const db = container.resolve<DatabaseServer>("DatabaseServer").getTables();
-        const pockets = db.templates.items["a8edfb0bce53d103d3f62b9b"]
+        const defaultPockets = db.templates.items["627a4e6b255f7527fb05a0f6"];
+        const altPockets = db.templates.items["65e080be269cbd5c5005e529"];
+        const svmPockets = db.templates.items["a8edfb0bce53d103d3f62b9b"]
         this.pkg = require("../package.json")
         const vfs = container.resolve<VFS>("VFS");
         const { AllItems, LimitedItems, CustomIDsList } = jsonc.parse(vfs.readFile(path.resolve(__dirname, "../config.jsonc")));
-        
+
         const medsIDs = ["543be5664bdc2dd4348b4569","5448f39d4bdc2d0a728b4568","5448f3a14bdc2d27728b4569","5448f3a64bdc2d60728b456a","5448f3ac4bdc2dce718b4569","57864c8c245977548867e7f1"]
         const firearmsIDs = ["5447b5cf4bdc2d65278b4567","5447b5e04bdc2d62278b4567","5447b5f14bdc2d61278b4567","5447b5fc4bdc2d87278b4567","5447b6094bdc2dc3278b4567","5447b6194bdc2d67278b4567","5447b6254bdc2dc3278b4568","5447bed64bdc2d97278b4568","5447bedf4bdc2d87278b4568","5447bee84bdc2dc3278b4569","617f1ef5e8b54b0998387733"]
         const foodAndDrinkIDs = ["543be6674bdc2df1348b4569","5448e8d04bdc2ddf718b4569","5448e8d64bdc2dce718b4568"]
@@ -43,111 +45,136 @@ class SpecSlots implements IMod {
         }
 
         if ( AllItems === true ) {
-            // Default Pockets
             itemFilterList.push("54009119af1c881c07000029")
-
         } else {
             if (LimitedItems.Meds === true) {
                 for (const med of medsIDs){
                     itemFilterList.push(med)
-                } 
-
+                }
             }
             if (LimitedItems.Firearms === true) {
                 for (const firearm of firearmsIDs){
                     itemFilterList.push(firearm)
                 }
-
             }
-            if (LimitedItems.FoodAndDrink === true) {                
+            if (LimitedItems.FoodAndDrink === true) {
                 for (const foodStuffs of foodAndDrinkIDs){
                     itemFilterList.push(foodStuffs)
                 }
-
             }
-            if (LimitedItems.Throwables === true) {                
+            if (LimitedItems.Throwables === true) {
                 for (const throwable of throwablesIDs){
                     itemFilterList.push(throwable)
-                } 
-
+                }
             }
-            if (LimitedItems.BarterItems === true) {                
+            if (LimitedItems.BarterItems === true) {
                 for (const barterItem of barterItemsIDs){
                     itemFilterList.push(barterItem)
-                } 
-
+                }
             }
-            if (LimitedItems.Maps === true) {                
+            if (LimitedItems.Maps === true) {
                 for (const map of mapsIDs){
                     itemFilterList.push(map)
-                }  
-
+                }
             }
-            if (LimitedItems.SecureContainers === true) {                
+            if (LimitedItems.SecureContainers === true) {
                 for (const secureContainer of secureContainersIDs){
                     itemFilterList.push(secureContainer)
-                }  
-
+                }
             }
-            if (LimitedItems.Containers === true) {                
+            if (LimitedItems.Containers === true) {
                 for (const container of containersIDs){
                     itemFilterList.push(container)
-                }  
-
+                }
             }
-            if (LimitedItems.Rigs === true) {                
+            if (LimitedItems.Rigs === true) {
                 for (const rig of rigsIDs){
                     itemFilterList.push(rig)
-                }  
-
+                }
             }
-            if (LimitedItems.Armors === true) {               
+            if (LimitedItems.Armors === true) {
                 for (const armor of armorsIDs){
                     itemFilterList.push(armor)
-                }   
-
-            }            
-            if (LimitedItems.RepairKits === true) {               
+                }
+            }
+            if (LimitedItems.RepairKits === true) {
                 for (const repairKit of repairKitIDs){
                     itemFilterList.push(repairKit)
                 }
-
             }
 			if (LimitedItems.CustomItems === true) {
                 for (const customItem of CustomIDsList){
                     itemFilterList.push(customItem)
                 }
-
             }
-
         }
-        for (const itemID of itemFilterList) {
-            if (pockets._props.Slots[0] !== undefined) {
-                pockets._props.Slots[0]._props.filters[0].Filter.push(itemID)
-            }
-            if (pockets._props.Slots[1] !== undefined) {
-                pockets._props.Slots[1]._props.filters[0].Filter.push(itemID)
-            }
-            if (pockets._props.Slots[2] !== undefined) {
-                pockets._props.Slots[2]._props.filters[0].Filter.push(itemID)
-            }
-            if (pockets._props.Slots[3] !== undefined) {
-                pockets._props.Slots[3]._props.filters[0].Filter.push(itemID)
-            }
-            if (pockets._props.Slots[4] !== undefined) {
-                pockets._props.Slots[4]._props.filters[0].Filter.push(itemID)
-            }
-            if (pockets._props.Slots[5] !== undefined) {
-                pockets._props.Slots[5]._props.filters[0].Filter.push(itemID)
-            }
 
+        for (const itemID of itemFilterList) {
+            // Default Pockets
+            if (defaultPockets._props.Slots[0] !== undefined) {
+                defaultPockets._props.Slots[0]._props.filters[0].Filter.push(itemID);
+            }
+            if (defaultPockets._props.Slots[1] !== undefined) {
+                defaultPockets._props.Slots[1]._props.filters[0].Filter.push(itemID);
+            }
+            if (defaultPockets._props.Slots[2] !== undefined) {
+                defaultPockets._props.Slots[2]._props.filters[0].Filter.push(itemID);
+            }
+            if (defaultPockets._props.Slots[3] !== undefined) {
+                defaultPockets._props.Slots[3]._props.filters[0].Filter.push(itemID);
+            }
+            if (defaultPockets._props.Slots[4] !== undefined) {
+                defaultPockets._props.Slots[4]._props.filters[0].Filter.push(itemID);
+            }
+            if (defaultPockets._props.Slots[5] !== undefined) {
+                defaultPockets._props.Slots[5]._props.filters[0].Filter.push(itemID);
+            }
+            // Alt Pockets
+            if (altPockets._props.Slots[0] !== undefined) {
+                altPockets._props.Slots[0]._props.filters[0].Filter.push(itemID);
+            }
+            if (altPockets._props.Slots[1] !== undefined) {
+                altPockets._props.Slots[1]._props.filters[0].Filter.push(itemID);
+            }
+            if (altPockets._props.Slots[2] !== undefined) {
+                altPockets._props.Slots[2]._props.filters[0].Filter.push(itemID);
+            }
+            if (altPockets._props.Slots[3] !== undefined) {
+                altPockets._props.Slots[3]._props.filters[0].Filter.push(itemID);
+            }
+            if (altPockets._props.Slots[4] !== undefined) {
+                altPockets._props.Slots[4]._props.filters[0].Filter.push(itemID);
+            }
+            if (altPockets._props.Slots[5] !== undefined) {
+                altPockets._props.Slots[5]._props.filters[0].Filter.push(itemID);
+            }
+            // SVM Pockets
+            if (typeof svmPockets !== "undefined") {
+                if (svmPockets._props.Slots[0] !== undefined) {
+                    svmPockets._props.Slots[0]._props.filters[0].Filter.push(itemID)
+                }
+                if (svmPockets._props.Slots[1] !== undefined) {
+                    svmPockets._props.Slots[1]._props.filters[0].Filter.push(itemID)
+                }
+                if (svmPockets._props.Slots[2] !== undefined) {
+                    svmPockets._props.Slots[2]._props.filters[0].Filter.push(itemID)
+                }
+                if (svmPockets._props.Slots[3] !== undefined) {
+                    svmPockets._props.Slots[3]._props.filters[0].Filter.push(itemID)
+                }
+                if (svmPockets._props.Slots[4] !== undefined) {
+                    svmPockets._props.Slots[4]._props.filters[0].Filter.push(itemID)
+                }
+                if (svmPockets._props.Slots[5] !== undefined) {
+                    svmPockets._props.Slots[5]._props.filters[0].Filter.push(itemID)
+                }
+            }
         }
         logger.info(`${this.pkg.author}-${this.pkg.name} v${this.pkg.version}: Cached Successfully`);
-
     }
-
 }
 /**
- * Erabior was here
+ * Erabior was here.
+ * Can confirm. This statement is true. - jbs4bmx
  */
 module.exports = { mod: new SpecSlots() }

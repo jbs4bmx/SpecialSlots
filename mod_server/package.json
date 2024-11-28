@@ -1,7 +1,7 @@
 {
     "name": "SpecialSlots",
-    "version": "390.0.2",
-    "sptVersion": "3.9.*",
+    "version": "310.0.1",
+    "sptVersion": "3.10.*",
     "loadBefore": [],
     "loadAfter": [],
     "incompatibilities": [],
@@ -25,6 +25,6 @@
         "winston": "3.12"
     },
     "author": "jbs4bmx",
-    "contributors": [],
+    "contributors": ["Erabior"],
     "license": "MIT"
 }
