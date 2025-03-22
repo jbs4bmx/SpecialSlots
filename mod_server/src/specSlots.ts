@@ -1,27 +1,51 @@
+/* eslint-disable no-var */
 /**
  * Copyright: jbs4bmx
 */
 
-
-import { DependencyContainer } from "tsyringe";
-import { IMod } from "@spt/models/external/mod";
-import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { ConfigServer } from "@spt/servers/ConfigServer";
+import { ConfigTypes } from "@spt/models/enums/ConfigTypes";
 import { DatabaseServer } from "@spt/servers/DatabaseServer";
-import { VFS } from "@spt/utils/VFS";
+import { container, DependencyContainer } from "tsyringe";
+import { ICoreConfig } from "@spt/models/spt/config/ICoreConfig";
+import { IDatabaseTables } from "@spt/models/spt/server/IDatabaseTables";
+import { ILogger } from "@spt/models/spt/utils/ILogger";
+import { IMod } from "@spt/models/external/mod";
+import { IPreSptLoadMod } from "@spt/models/external/IPreSptLoadMod";
+import { FileSystemSync } from "@spt/utils/FileSystemSync";
+import { satisfies } from "semver";
 import { jsonc } from "jsonc";
 import path from "path";
 
-class SpecSlots implements IMod {
-    private pkg;
-    public postDBLoad(container: DependencyContainer): void {
-		const logger = container.resolve<ILogger>("WinstonLogger");
-		const db = container.resolve<DatabaseServer>("DatabaseServer").getTables();
-        const defaultPockets = db.templates.items["627a4e6b255f7527fb05a0f6"];
-        const altPockets = db.templates.items["65e080be269cbd5c5005e529"];
-        const svmPockets = db.templates.items["a8edfb0bce53d103d3f62b9b"]
-        this.pkg = require("../package.json")
-        const vfs = container.resolve<VFS>("VFS");
-        const { AllItems, LimitedItems, CustomIDsList } = jsonc.parse(vfs.readFile(path.resolve(__dirname, "../config.jsonc")));
+//const db = container.resolve<DatabaseServer>("DatabaseServer").getTables();
+//const dbServer = container.resolve<DatabaseServer>("DatabaseServer");
+//const tables: IDatabaseTables = dbServer.getTables();
+const logger = container.resolve<ILogger>("WinstonLogger");
+const configServer = container.resolve<ConfigServer>("ConfigServer");
+const sptConfig = configServer.getConfig<ICoreConfig>(ConfigTypes.CORE);
+const fileSystem = container.resolve<FileSystemSync>("FileSystemSync");
+
+class SpecSlots implements IPreSptLoadMod, IMod
+{
+    private privatePath = require('path');
+    public modName: string = this.privatePath.basename(this.privatePath.dirname(__dirname.split('/').pop()));
+
+    public preSptLoad(container: DependencyContainer): void
+    {
+        if (!this.validSptVersion(container)) {
+            logger.error("This version of SpecialSlots was not made for your version of SPT. Disabling");
+            return;
+        }
+    }
+
+    public postDBLoad(container: DependencyContainer): void
+    {
+        const dbServer = container.resolve<DatabaseServer>("DatabaseServer");
+        const tables: IDatabaseTables = dbServer.getTables();
+        const defaultPockets = tables.templates.items["627a4e6b255f7527fb05a0f6"];
+        const altPockets = tables.templates.items["65e080be269cbd5c5005e529"];
+        const svmPockets = tables.templates.items["a8edfb0bce53d103d3f62b9b"];
+        const { AllItems, LimitedItems, CustomIDsList } = jsonc.parse(fileSystem.read(path.resolve(__dirname, "../config.jsonc")));
 
         const medsIDs = ["543be5664bdc2dd4348b4569","5448f39d4bdc2d0a728b4568","5448f3a14bdc2d27728b4569","5448f3a64bdc2d60728b456a","5448f3ac4bdc2dce718b4569","57864c8c245977548867e7f1"]
         const firearmsIDs = ["5447b5cf4bdc2d65278b4567","5447b5e04bdc2d62278b4567","5447b5f14bdc2d61278b4567","5447b5fc4bdc2d87278b4567","5447b6094bdc2dc3278b4567","5447b6194bdc2d67278b4567","5447b6254bdc2dc3278b4568","5447bed64bdc2d97278b4568","5447bedf4bdc2d87278b4568","5447bee84bdc2dc3278b4569","617f1ef5e8b54b0998387733"]
@@ -40,8 +64,6 @@ class SpecSlots implements IMod {
             logger.error(`SpecialSlots: One or more Compatability selection values are not a boolean value of true or false.`)
             logger.error(`Please fix your configuration file and restart your server.`)
             return
-        } else {
-            logger.info(`SpecialSlots config looks correct. Continuing to load mod...`);
         }
 
         if ( AllItems === true ) {
@@ -170,9 +192,17 @@ class SpecSlots implements IMod {
                 }
             }
         }
-        logger.info(`${this.pkg.author}-${this.pkg.name} v${this.pkg.version}: Cached Successfully`);
+    }
+
+    private validSptVersion(container: DependencyContainer): boolean
+    {
+        const sptVersion = globalThis.G_SPTVERSION || sptConfig.sptVersion;
+        const packageJsonPath: string = path.join(__dirname, "../package.json");
+        const modSptVersion = JSON.parse(fileSystem.read(packageJsonPath)).sptVersion;
+        return satisfies(sptVersion, modSptVersion);
     }
 }
+
 /**
  * Erabior was here.
  * Can confirm. This statement is true. - jbs4bmx

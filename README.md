@@ -96,7 +96,7 @@ Cons:
 |                         IDEs                                |      Name       | Link                                      |
 | :---------------------------------------------------------: | :-------------: | :---------------------------------------: |
 | <img src="./images/icons/VisualStudio-Dark.svg" width="48"> | `Visual Studio` | [Visual Studio Website][VisualStudio-url] |
-| <img src="./images/icons/VSCodium-Dark.svg" width="48">     | `VSCodium`      | [VSCodium Website][Vscodium-url]          |
+| <img src="./images/icons/VSCode-Dark.svg" width="48">       | `VSCode`        | [VSCode Website][Vscode-url]              |
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -251,11 +251,6 @@ Contributors:</br>
 
 <!-- Framwork/Library URLs -->
 [CSharp-url]: https://learn.microsoft.com/en-us/dotnet/csharp/
-[JavaScript-url]: https://www.javascript.com/
 [TypeScript-url]: https://www.typescriptlang.org/
-[PowerShell-url]: https://learn.microsoft.com/en-us/powershell/
-[NET-url]: https://learn.microsoft.com/en-us/dotnet/
-[Batch-url]: https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/windows-commands
 [Vscode-url]: https://code.visualstudio.com/
-[Vscodium-url]: https://vscodium.com/
 [VisualStudio-url]: https://visualstudio.microsoft.com/
