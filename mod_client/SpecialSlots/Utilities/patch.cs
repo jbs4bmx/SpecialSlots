@@ -14,8 +14,8 @@ namespace SpecialSlots.Utilities
             return typeof(SlotItemView).GetMethod(nameof(SlotItemView.NewSlotItemView));
         }
 
-        [PatchPostfix]
-        private static void Postfix(SlotItemView __instance, Item item)
+        [PatchPrefix]
+        private static void PatchPrefix(SlotItemView __instance, Item item)
         {
             if (!SlotsPlugin.Instance.Enable.Value)
             {
@@ -25,26 +25,34 @@ namespace SpecialSlots.Utilities
             {
                 return;
             }
-
             if (lootItem.Grids != null && lootItem.Grids.Length <= 0)
             {
                 return;
             }
-
-            StaticManager.BeginCoroutine(SlotItemViewNewSlotItemViewPatch.DoCoroutine(__instance));
+            StaticManager.BeginCoroutine(SlotItemViewNewSlotItemViewPatch.DoCoroutine1(__instance));
+            StaticManager.BeginCoroutine(SlotItemViewNewSlotItemViewPatch.DoCoroutine2(__instance));
         }
 
-        private static IEnumerator DoCoroutine(SlotItemView __instance)
+        private static IEnumerator DoCoroutine1(SlotItemView __instance)
         {
             for (int i = 0; i < SlotsPlugin.Instance.FramesToWait.Value; i++)
             {
                 yield return null;
             }
-
             GeneratedGridsView generatedGridsView = __instance.transform.parent.GetComponentInChildren<GeneratedGridsView>();
-            if (generatedGridsView != null)
+            generatedGridsView.GameObject.SetActive(false);
+        }
+
+        private static IEnumerator DoCoroutine2(SlotItemView __instance)
+        {
+            for (int i = 0; i < SlotsPlugin.Instance.FramesToWait.Value; i++)
             {
-                generatedGridsView.GameObject.SetActive(false);
+                yield return null;
+            }
+            GridView[] gridViews = __instance.transform.parent.GetComponentsInChildren<GridView>();
+            foreach (var grid in gridViews)
+            {
+                grid.GameObject.SetActive(false);
             }
         }
     }
