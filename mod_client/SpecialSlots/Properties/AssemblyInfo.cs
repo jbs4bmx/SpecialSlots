@@ -7,11 +7,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("SpecialSlots")]
-[assembly: AssemblyDescription("Utility to hide slot expansion for containers placed into Special Slots.")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("jbs4bmx")]
 [assembly: AssemblyProduct("SpecialSlots")]
-[assembly: AssemblyCopyright("Copyright ©  2024")]
+[assembly: AssemblyCopyright("Copyright © 2025")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -33,6 +33,6 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("311.2.1.0")]
-[assembly: AssemblyFileVersion("311.2.1.0")]
+[assembly: AssemblyVersion("311.3.1.0")]
+[assembly: AssemblyFileVersion("311.3.1.0")]
 [assembly: NeutralResourcesLanguage("en-US")]

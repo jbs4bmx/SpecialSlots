@@ -10,8 +10,8 @@ using static SpecialSlots.Utilities.VersionChecker;
 
 namespace SpecialSlots
 {
-    [BepInPlugin("com.jbs4bmx.SpecialSlots", "SpecialSlots", "311.2.1")]
-    [BepInDependency("com.SPT.core", "3.11.2")]
+    [BepInPlugin("com.jbs4bmx.SpecialSlots", "SpecialSlots", "311.3.1")]
+    [BepInDependency("com.SPT.core", "3.11.0")]
     public class SlotsPlugin : BaseUnityPlugin
     {
         public const int TarkovVersion = 35392;
