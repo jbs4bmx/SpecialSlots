@@ -54,22 +54,18 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
+## 📋 About The Project
 Type: Client Mod & Server Mod</br>
 Disclaimer: **This mod is provided _as-is_ with _no guarantee_ of support.**
 
 You have 3 "SPEC" slots. My question is, "Why not allow all items to be placed in those slots?"</br>
 Well, here you go. Special Slots now hold all.
 
-**New as of version 390.0.2** - Special Slots now contains both a Server and a Client mod. The Client mod (also aptly named SpecialSlots.dll) aims to hide the slot view of containers placed into a Special Slot. Some containers, such as rigs, still show their slot views when placed into Special Slots.
-
-
 ### Mod Compatibility
 Compatible with ServerValueModifier's custom pockets. (Some limitations are expected.)
   * Special Slots are only visible when using a 1 cell width for each of the 4 pockets.
     - Exception: Using only 3 or less pockets, you can expand them horizontally so long as they don't total more than 4 wide.
     - For example; if you increase the width of your pockets to 2 cells each, then this will "push" Special Slots off screen (technically under your invetory box) and you will not be able to use them.
-
 
 ### Pros and Cons
 Pros:
@@ -86,24 +82,21 @@ Cons:
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-
-### Built With
+### 🔨 Built With
 | Frameworks/Libraries                                      | Name         | Link                                       |
 | :-------------------------------------------------------: | :----------: | :----------------------------------------: |
 | <img src="./images/icons/CS.svg" width="48">              | `C Sharp`    | [C# Documentation][CSharp-url]             |
-| <img src="./images/icons/TypeScript.svg" width="48">      | `TypeScript` | [TypeScript Website][TypeScript-url]       |
 
 |                         IDEs                                |      Name       | Link                                      |
 | :---------------------------------------------------------: | :-------------: | :---------------------------------------: |
 | <img src="./images/icons/VisualStudio-Dark.svg" width="48"> | `Visual Studio` | [Visual Studio Website][VisualStudio-url] |
-| <img src="./images/icons/VSCode-Dark.svg" width="48">       | `VSCode`        | [VSCode Website][Vscode-url]              |
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">🔼 back to top</a>)</p>
 
 
 
 <!-- GETTING STARTED -->
-## Getting Started
+## 🎮 Getting Started
 This section will explain how to install and use this mod.
 
 ### Prerequisites
@@ -116,18 +109,18 @@ Start by downloading the mod from the [Releases](https://github.com/jbs4bmx/Spec
 
 Follow these steps to install and configure the mod:
   1. Extract the contents of the zip file into the root of your [SPT] folder.
-     - That's the same location as "SPT.Server.exe" and "SPT.Launcher.exe".
+     - That's the same location as "EscapeFromTarkov.exe".
   2. Start SPT.Server.exe and wait until it fully loads.
   3. Start SPT.Launcher.exe.
   4. Now you can launch the game.
   5. To configure or use the mod, press F12 while in game. Mod will be listed among client mods in the BepInEx menu.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+<p align="right">(<a href="#readme-top">🔼 back to top</a>)</p>
 
 
 
 <!-- CONFIGURATION EXAMPLES -->
-## Configuration
+## ⚙ Configuration
 Edit '.\config.jsonc' file as desired. <br>
 ```jsonc
 {
@@ -178,19 +171,18 @@ Edit '.\config.jsonc' file as desired. <br>
 All other configurations are done within the BepInEx F12 menu while in-game.</br>
 Customizations:
   - Enable/Disable client mod.
-  - Change minimum distance from player that bodies must be at in order to be removed. (distance expressed in meters)
-  - Instant removal button in BepInEx menu (F12). Now you can instantly trigger the body removal to occur. Any bodies within your minimum distance from you will not be removed.
+  - Time Interval in frames - How many frames before a container that is placed in the special slots are not shown/expanded similar to how rigs or backpacks expand when placed in their respective slots..
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-### Mod FAQ
+### ⚠ Mod FAQ
    1. Where do I report bugs found with the current version of the mod?
       - You can report bugs for the current version of this mod here: [SS Mod Page](https://hub.sp-tarkov.com/files/file/775-special-slots/).
 
 
 
 <!-- ROADMAP -->
-## Roadmap
+## 🚗 Roadmap
 - [x] Add Changelog
 - [ ] Improve slot expansion hide methods to encompase all containerized items.
 
@@ -201,7 +193,7 @@ Suggest changes or view/report issues [here](https://github.com/jbs4bmx/SpecialS
 
 
 <!-- CONTRIBUTING -->
-## Contributing
+## 🚧 Contributing
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
@@ -221,7 +213,7 @@ You can also buy me a coffee! (This is not required, but I greatly appreciate an
 
 
 <!-- LICENSE -->
-## License
+## 🪧 License
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
@@ -229,7 +221,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
+## 👍 Acknowledgments
 Contributors:</br>
 [Erabior](https://github.com/Erabior)
 
@@ -251,6 +243,4 @@ Contributors:</br>
 
 <!-- Framwork/Library URLs -->
 [CSharp-url]: https://learn.microsoft.com/en-us/dotnet/csharp/
-[TypeScript-url]: https://www.typescriptlang.org/
-[Vscode-url]: https://code.visualstudio.com/
 [VisualStudio-url]: https://visualstudio.microsoft.com/

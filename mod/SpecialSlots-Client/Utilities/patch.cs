@@ -5,7 +5,7 @@ using SPT.Reflection.Patching;
 using System.Collections;
 using System.Reflection;
 
-namespace SpecialSlots.Utilities
+namespace SpecialSlots_Client.Utilities
 {
     public class SlotItemViewNewSlotItemViewPatch : ModulePatch
     {

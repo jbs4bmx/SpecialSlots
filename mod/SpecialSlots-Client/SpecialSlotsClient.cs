@@ -1,20 +1,16 @@
 ﻿using BepInEx;
 using BepInEx.Configuration;
-using SpecialSlots.Utilities;
+using SpecialSlots_Client.Utilities;
 using System;
-using static SpecialSlots.Utilities.VersionChecker;
+using static SpecialSlots_Client.Utilities.VersionChecker;
 
-/*
- Some code borrowed from GhostFenixx's "HideSpecialIcon.dll" fix for the same function that this mod provides.
- */
-
-namespace SpecialSlots
+namespace SpecialSlots_Client
 {
-    [BepInPlugin("com.jbs4bmx.SpecialSlots", "SpecialSlots", "311.3.1")]
-    [BepInDependency("com.SPT.core", "3.11.0")]
+    [BepInPlugin("com.jbs4bmx.SpecialSlots", "SpecialSlots", "4.0.0")]
+    [BepInDependency("com.SPT.core", "4.0.0")]
     public class SlotsPlugin : BaseUnityPlugin
     {
-        public const int TarkovVersion = 35392;
+        public const int TarkovVersion = 40087;
         public static SlotsPlugin Instance { get; private set; }
         public ConfigEntry<bool> Enable { get; private set; }
         public ConfigEntry<int> FramesToWait { get; private set; }
