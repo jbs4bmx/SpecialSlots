@@ -16,7 +16,7 @@ public record ModMetadata : AbstractModMetadata
     public override string Name { get; init; } = "ReadJsonConfigExample";
     public override string Author { get; init; } = "SpecialSlots";
     public override List<string>? Contributors { get; init; }
-    public override SemanticVersioning.Version Version { get; init; } = new("1.0.0");
+    public override SemanticVersioning.Version Version { get; init; } = new("4.0.1");
     public override SemanticVersioning.Range SptVersion { get; init; } = new("~4.0.0");
     public override List<string>? Incompatibilities { get; init; }
     public override Dictionary<string, SemanticVersioning.Range>? ModDependencies { get; init; }
@@ -39,7 +39,7 @@ public class SpecialSlotsServer(
         var items = databaseService.GetItems();
         const string svmId = "a8edfb0bce53d103d3f62b9b";
 
-        List<string> IdList = [];
+        List<MongoId> IdList = [];
 
         var defaultPockets = items.GetValueOrDefault(ItemTpl.POCKETS_1X4_SPECIAL);
         var altPockets = items.GetValueOrDefault(ItemTpl.POCKETS_1X4_TUE);
@@ -198,7 +198,25 @@ public class SpecialSlotsServer(
             {
                 if (config.CustomIDsList != null)
                 {
-                    IdList.AddRange(config.CustomIDsList);
+                    //IdList.AddRange(config.CustomIDsList.Select(id => new MongoId(id)));
+
+                    foreach (var idStr in config.CustomIDsList)
+                    {
+                        try
+                        {
+                            var mongoId = new MongoId(idStr);
+                            IdList.Add(mongoId);
+                        }
+                        catch
+                        {
+                            logger.Warning($"Failed to parse MongoId '{idStr}'");
+                        }
+                    }
+
+                }
+                else
+                {
+                    logger.Warning("CustomItems is enabled but no CustomIDsList is provided in the config.");
                 }
             }
 
@@ -211,7 +229,7 @@ public class SpecialSlotsServer(
                     {
                         foreach (var y in x.Properties.Filters)
                         {
-                            y.Filter?.UnionWith((IEnumerable<MongoId>)IdList);
+                            y.Filter?.UnionWith(IdList);
                         }
                     }
                 }
@@ -224,7 +242,7 @@ public class SpecialSlotsServer(
                     {
                         foreach (var y in x.Properties.Filters)
                         {
-                            y.Filter?.UnionWith((IEnumerable<MongoId>)IdList);
+                            y.Filter?.UnionWith(IdList);
                         }
                     }
                 }
@@ -237,7 +255,7 @@ public class SpecialSlotsServer(
                     {
                         foreach (var y in x.Properties.Filters)
                         {
-                            y.Filter?.UnionWith((IEnumerable<MongoId>)IdList);
+                            y.Filter?.UnionWith(IdList);
                         }
                     }
                 }
