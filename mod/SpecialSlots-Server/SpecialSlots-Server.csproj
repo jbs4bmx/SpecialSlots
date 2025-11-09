@@ -5,8 +5,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <Platforms>AnyCPU;x64</Platforms>
-    <Version>4.0.1</Version>
+    <Version>4.0.2</Version>
     <Copyright>Copyright © jbs4bmx 2025</Copyright>
+    <Title>Special Slots</Title>
   </PropertyGroup>
 
   <ItemGroup>

@@ -6,7 +6,7 @@ using static SpecialSlots_Client.Utilities.VersionChecker;
 
 namespace SpecialSlots_Client
 {
-    [BepInPlugin("com.jbs4bmx.SpecialSlots", "SpecialSlots", "4.0.0")]
+    [BepInPlugin("com.jbs4bmx.specialslots", "SpecialSlots", "4.0.2")]
     [BepInDependency("com.SPT.core", "4.0.0")]
     public class SlotsPlugin : BaseUnityPlugin
     {
@@ -53,7 +53,7 @@ namespace SpecialSlots_Client
                 )
             );
 
-            new SlotItemViewNewSlotItemViewPatch().Enable();
+            new SlotItemViewPatch().Enable();
         }
     }
 }

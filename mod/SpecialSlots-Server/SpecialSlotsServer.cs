@@ -12,17 +12,17 @@ namespace SpecialSlots_Server;
 
 public record ModMetadata : AbstractModMetadata
 {
-    public override string ModGuid { get; init; } = "com.jbs4bmx.SpecialSlots";
+    public override string ModGuid { get; init; } = "com.jbs4bmx.specialslots";
     public override string Name { get; init; } = "ReadJsonConfigExample";
     public override string Author { get; init; } = "SpecialSlots";
     public override List<string>? Contributors { get; init; }
-    public override SemanticVersioning.Version Version { get; init; } = new("4.0.1");
+    public override SemanticVersioning.Version Version { get; init; } = new("4.0.2");
     public override SemanticVersioning.Range SptVersion { get; init; } = new("~4.0.0");
     public override List<string>? Incompatibilities { get; init; }
     public override Dictionary<string, SemanticVersioning.Range>? ModDependencies { get; init; }
     public override string? Url { get; init; }
     public override bool? IsBundleMod { get; init; }
-    public override string? License { get; init; } = "MIT";
+    public override string License { get; init; } = "MIT";
 }
 
 [Injectable(TypePriority = OnLoadOrder.PostDBModLoader + 1)]

@@ -7,7 +7,7 @@ using System.Reflection;
 
 namespace SpecialSlots_Client.Utilities
 {
-    public class SlotItemViewNewSlotItemViewPatch : ModulePatch
+    public class SlotItemViewPatch : ModulePatch
     {
         protected override MethodBase GetTargetMethod()
         {
@@ -29,8 +29,8 @@ namespace SpecialSlots_Client.Utilities
             {
                 return;
             }
-            StaticManager.BeginCoroutine(SlotItemViewNewSlotItemViewPatch.DoCoroutine1(__instance));
-            StaticManager.BeginCoroutine(SlotItemViewNewSlotItemViewPatch.DoCoroutine2(__instance));
+            StaticManager.BeginCoroutine(SlotItemViewPatch.DoCoroutine1(__instance));
+            StaticManager.BeginCoroutine(SlotItemViewPatch.DoCoroutine2(__instance));
         }
 
         private static IEnumerator DoCoroutine1(SlotItemView __instance)
@@ -39,8 +39,12 @@ namespace SpecialSlots_Client.Utilities
             {
                 yield return null;
             }
+
             GeneratedGridsView generatedGridsView = __instance.transform.parent.GetComponentInChildren<GeneratedGridsView>();
-            generatedGridsView.GameObject.SetActive(false);
+            if (generatedGridsView?.GameObject != null)
+            {
+                generatedGridsView.GameObject.SetActive(false);
+            }
         }
 
         private static IEnumerator DoCoroutine2(SlotItemView __instance)
@@ -49,10 +53,19 @@ namespace SpecialSlots_Client.Utilities
             {
                 yield return null;
             }
+
             GridView[] gridViews = __instance.transform.parent.GetComponentsInChildren<GridView>();
+            if (gridViews == null || gridViews.Length == 0)
+            {
+                yield break;
+            }
+
             foreach (var grid in gridViews)
             {
-                grid.GameObject.SetActive(false);
+                if (grid?.GameObject != null)
+                {
+                    grid.GameObject.SetActive(false);
+                }
             }
         }
     }
